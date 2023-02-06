@@ -1,0 +1,178 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+
+    .header {
+        display: flex;
+        align-items: center;
+        height: 4rem;
+        animation-duration: 1s;
+        animation-name: fadein;
+
+        img {
+            height: 4rem;
+            aspect-ratio: 1;
+            border-radius: 100%;
+        }
+
+        .userInfos {
+            padding: 0 1rem;
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            p {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                align-items: center;
+                font-size: 16px;
+                font-weight: 500;
+                color: #00B37E;
+
+                div {
+                    height: 15px;
+                    width: 15px;
+                    aspect-ratio: 1/1;
+                    background-color: #00B37E;
+                    border-radius: 100%;
+                    transform: translate(0%, -5%);
+                }
+            }
+        }
+
+        .closeChatButton {
+            display: flex;
+            background: none;
+            margin-left: 2rem;
+             
+            img {
+                height: 30px;
+                width:  30px;
+            }
+        }
+
+    }
+
+    .messagesContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+
+        overflow: scroll;
+        overflow-x: hidden;
+        
+        .message {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: flex-start;
+            max-width: 50%;
+            margin: 10px;
+            animation-duration: 1s;
+            animation-name: fadein;
+            
+            h1 {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+            
+            p {
+                margin-top: 10px;
+                background-color: #633BBC;
+                width: fit-content;
+                padding: 1rem;
+                border-radius: 1px 8px 8px 8px;
+            }
+
+        }
+        
+        #myMessage {
+            display: flex;
+            align-self: flex-end;
+            align-items: flex-end;
+
+            p {
+                background-color: #07847E;
+                border-radius: 8px 8px 1px 8px;
+            }
+        }
+    }
+
+    .messagesContainer::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #1A1924;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #026346;
+    }
+
+    .messageForm {
+        display: flex;
+        height: 4rem;
+
+
+        input {
+            height: 4rem;
+            width: 100%;
+            border-radius: 100px 0px 0px 100px;
+            background-color: #282843;
+            border: 0;
+
+            outline: none;
+            padding: 0rem 2%;
+            font-size: 1.1rem;
+            color: #e1e1e6;
+        }
+
+        input::placeholder {
+            color: #E1E1E6;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #282843;
+            width: 8rem;
+            border-radius: 0px 100px 100px 0px;
+        }
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .container {
+        display: flex;
+        position: absolute;
+        
+        width: 100vw;
+        height: 100vh;
+        padding: 1rem;
+        padding-top: 4rem;
+
+        z-index: 2;
+
+        background-color: #1A1924;
+
+        .header {
+            justify-content: center;
+        }
+
+    }
+}

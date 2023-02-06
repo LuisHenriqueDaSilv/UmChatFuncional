@@ -1,0 +1,127 @@
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    
+    form {
+        
+        width: 37rem;
+
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-60%, -50%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+        }
+
+        input {
+            background-color: #282843;
+            border: none;
+            border-radius: 100px;
+            
+            width: 100%;
+            height: 3.5rem;
+
+            outline: none;
+            padding: 0rem 5%;
+            font-size: 1.1rem;
+            color: #e1e1e6;
+        }
+
+        input::placeholder {
+            color: #E1E1E6;
+            font-size: 1.2rem;
+        }
+
+        #imageContainer {
+            padding: 1rem 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+
+            width: 100%;
+            min-height: 10rem;
+            
+            background-color: #282843;
+            border-radius: 20px;
+            font-size: 1rem;
+            
+            input {
+                display: none;
+            }
+
+            p {
+                width: 40%;
+                text-align: center;
+            }
+
+            img {
+                height: 12rem;
+                aspect-ratio: 1;
+                border-radius: 100%;
+                transition: 500ms;
+            }
+
+            #noImage {
+                height: 1px;
+            }
+        }
+
+        .removeImageButton {
+            border: none;
+            background: none;
+            color: #CE3024;
+            font-weight: 700;
+            cursor: grab;
+            margin-top: -1.5rem;
+        }
+
+        .errorMessage {
+            font-weight: 700;
+        }
+
+        .submitButton {
+            background-color: #00B37E;
+            border: none;
+            border-radius: 8px;
+            height: 3.5rem;
+            width: 50%;
+
+            font-size: 2rem;
+            color: #E1E1E6;
+            font-weight: 700;
+            
+            margin-top: -1.5rem;
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 1080px) {
+    .container {
+        form {
+            display: flex;
+            position: absolute;
+            width: 90%;
+            left: 5%;
+            right: 5%;
+            top: 10%;
+            transform: none;
+        }
+    }
+}
