@@ -1,5 +1,8 @@
-import {AuthContextProvider} from './contexts/Auth'
-import {ChatsContextProvider} from './contexts/Chats'
+import { CookiesProvider } from 'react-cookie'
+
+import { AuthContextProvider } from './contexts/Auth'
+import { ChatsContextProvider } from './contexts/Chats'
+
 
 import MainPage from './pages/MainPage'
 
@@ -7,11 +10,13 @@ import MainPage from './pages/MainPage'
 export default function App() {
 
 	return (
-		<AuthContextProvider>
-			<ChatsContextProvider>
-				<MainPage/>
-			</ChatsContextProvider>
-		</AuthContextProvider>
+		<CookiesProvider>
+			<AuthContextProvider>
+				<ChatsContextProvider>
+					<MainPage />
+				</ChatsContextProvider>
+			</AuthContextProvider>
+		</CookiesProvider>
 	)
 
 }

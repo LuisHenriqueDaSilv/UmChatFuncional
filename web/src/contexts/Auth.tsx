@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import {useCookies} from 'react-cookie'
 
 import {
     AuthContextProps,
@@ -18,11 +19,13 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthContextProvider({ children }: ContextProviderPropsParams) {
 
+    const [userCookies, setUserCookies] = useCookies(['auth'])
 
     const [user, setUser] = useState<User>({username: '', imageUrl: '', id: ''})
     const [areAuthenticated, setAreAuthenticated] = useState<boolean>(false)
 
     useEffect(() => {
+
         const token = getJwtToken()
         if (token) {
             setAreAuthenticated(true)
@@ -32,7 +35,8 @@ export function AuthContextProvider({ children }: ContextProviderPropsParams) {
 
 
     function getJwtToken() {
-        return localStorage.getItem('jwt')
+
+        return userCookies.auth
     }
 
     async function authenticate(data: AuthenticateFunctionParams) {
@@ -50,7 +54,7 @@ export function AuthContextProvider({ children }: ContextProviderPropsParams) {
             }
 
             setUser(authenticationResponse.data.user)
-            localStorage.setItem('jwt', authenticationResponse.data.jwt)
+            setUserCookies('auth', authenticationResponse.data.jwt, {path: '/'})
             setAreAuthenticated(true)
         } catch (error) {
             return ({
@@ -80,7 +84,7 @@ export function AuthContextProvider({ children }: ContextProviderPropsParams) {
     }
 
     function deauthenticate() {
-        localStorage.clear()
+        setUserCookies('auth', '', {path: '/'})
         setUser({username: '', imageUrl: '', id: ''})
         setAreAuthenticated(false);
     }
