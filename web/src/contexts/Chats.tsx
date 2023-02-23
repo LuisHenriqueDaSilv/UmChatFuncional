@@ -229,7 +229,6 @@ export function ChatsContextProvider({ children }: ContextProviderPropsParams) {
     }
 
     function setChatsSorted(newChatsData:Chat[]){
-        console.log('set chats')
         function compareFunction(chat1:Chat, chat2:Chat){
             const lastMessageDate1 = (new Date(chat1.lastMessageTime)).getTime()
             const lastMessageDate2 = (new Date(chat2.lastMessageTime)).getTime()
